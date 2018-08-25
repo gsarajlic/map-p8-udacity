@@ -10,7 +10,6 @@ class App extends Component {
 
   componentDidMount() {
     this.getData()
-    this.loadMap()
   }
 
   loadMap = () => {
@@ -33,14 +32,24 @@ class App extends Component {
      .then(response => {
        this.setState({
          sights: response.data.response.groups[0].items
-       })
+       }, this.loadMap())
      })
   }
 
   initMap = () => {
+    const zagreb = {lat: 45.815011, lng: 15.981919}
     const map = new window.google.maps.Map(document.getElementById('map'), {
-      center: {lat: -34.397, lng: 150.644},
-      zoom: 8
+      center: zagreb,
+      zoom: 11
+    })
+
+    this.state.sights.map(sight => {
+      // marker taken from google maps platform
+      var marker = new window.google.maps.Marker({
+        position: { lat: sight.venue.location.lat , lng: sight.venue.location.lng },
+        map: map,
+        title: sight.venue.name
+      })
     })
   }
 
