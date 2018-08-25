@@ -4,13 +4,20 @@ import './App.css';
 
 class App extends Component {
 
+
+
+  componentDidMount() {
+    this.loadMap()
+  }
+
   loadMap = () => {
     mapLoadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDBAVP-AGB5WzPHx4SdmJFDs5z1Thd3EQ4&callback=initMap')
+    window.initMap = this.initMap
   }
 
 
   initMap = () => {
-    const map = new google.maps.Map(document.getElementById('map'), {
+    const map = new window.google.maps.Map(document.getElementById('map'), {
       center: {lat: -34.397, lng: 150.644},
       zoom: 8
     })
@@ -27,12 +34,12 @@ class App extends Component {
 }
 
 function mapLoadScript (url) {
-  let paramOne = window.document.getElementsByTagName ('script'),
-      script = window.document.createElement('script')
+  let index = window.document.getElementsByTagName ('script')[0]
+  let script = window.document.createElement('script')
   script.src = url
   script.async = true
   script.defer = true
-  paramOne.parentNode.insertBefore(script, paramOne)
+  index.parentNode.insertBefore(script, index)
 }
 
 export default App;
