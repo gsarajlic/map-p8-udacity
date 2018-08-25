@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from 'axios'
+import axios from 'axios';
 
 class App extends Component {
 
-
+  state = {
+    sights: []
+  }
 
   componentDidMount() {
+    this.getData()
     this.loadMap()
   }
 
@@ -15,6 +18,24 @@ class App extends Component {
     window.initMap = this.initMap
   }
 
+
+  getData = () => {
+    const endPoint = 'https://api.foursquare.com/v2/venues/explore?'
+    const parameters = {
+      client_id: 'QVUQGABFGZPTCCXPCINNEM3RXJIJBZJRXMFEU2WIH0FRM2GU',
+      client_secret: 'PMWYZFZXRN2ST1DE51B14PK1D4IDWSMIUHLIJWLJZJK2IVB2',
+      query: 'sights',
+      near: 'Zagreb',
+      v:'20182508'
+    }
+
+     axios.get (endPoint + new URLSearchParams(parameters))
+     .then(response => {
+       this.setState({
+         sights: response.data.response.groups[0].items
+       })
+     })
+  }
 
   initMap = () => {
     const map = new window.google.maps.Map(document.getElementById('map'), {
