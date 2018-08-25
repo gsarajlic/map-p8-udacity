@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
 
 componentDidMount() {
+  this.getPlaces()
   this.initMap()
 }
 
@@ -22,6 +24,24 @@ initMap = () => {
 }
 
 
+getPlaces = () => {
+  const endPoint = 'https://api.foursquare.com/v2/venues/explore?';
+  const parametars = { 
+    client_id: 'QVUQGABFGZPTCCXPCINNEM3RXJIJBZJRXMFEU2WIH0FRM2GU',
+    client_secret: 'PMWYZFZXRN2ST1DE51B14PK1D4IDWSMIUHLIJWLJZJK2IVB2',
+    query: 'outdoors',
+    near: 'Zagreb',
+    v:'20182508'   
+   }
+
+  axios.get(endPoint + new URLSearchParams(parametars))
+    .then(response => {
+      console.log(response.data.response.groups[0].items);
+    }) 
+    .catch(error => {
+      console.log('error' + error)
+    })
+}
 
 
   render() {
