@@ -56,7 +56,8 @@ class App extends Component {
       let marker = new window.google.maps.Marker({
         position: { lat: sight.venue.location.lat , lng: sight.venue.location.lng },
         map: map,
-        title: sight.venue.name
+        title: sight.venue.name,
+        animation: window.google.maps.Animation.DROP,
       })
       
       // event listener for click on markers
@@ -77,11 +78,8 @@ class App extends Component {
         </header>
         <main id="main">
           <div id="map" role="application"></div>
-          <aside id="sidebar">
-            ASIDE MENU
-          </aside>
         </main>
-        
+        <aside id="sidebar"></aside>
       </div>
       
     )

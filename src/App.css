@@ -1,5 +1,8 @@
 #App {
   text-align: center;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .App-logo {
@@ -8,6 +11,7 @@
 }
 
 .App-header {
+  width:100%;
   background-color: #222;
   padding: 20px;
   color: white;
@@ -28,20 +32,35 @@
 
 #main{
   display: flex;
-  flex-direction: row;
+  width: 80%;
+  order: 2;
 }
 
 
 #map {
-  width: 80vw;
+  width: 100vw;
   height: 100vh;
   background-color: grey;
-  margin: auto;
-  order: 2;
 }
 
 #sidebar {
-width: 20vw;
+width: 20%;
 height: 100vh;
 order: 1;
+background-color: grey;
 }
+
+
+  /*
+*/
+/*
+width: 300px;
+height: 100%;
+position: absolute;
+transform: translate(-300px, 0);
+transition: transform 0.3s ease;
+*/
+
+
+
+
