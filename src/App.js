@@ -37,19 +37,33 @@ class App extends Component {
   }
 
   initMap = () => {
+    
     const zagreb = {lat: 45.815011, lng: 15.981919}
     const map = new window.google.maps.Map(document.getElementById('map'), {
       center: zagreb,
       zoom: 11
     })
 
+    // Create An InfoWindow
+    var infowindow = new window.google.maps.InfoWindow()
+
     this.state.sights.map(sight => {
+      
+      let infoWinText = `${sight.venue.name}`
+      
       // marker taken from google maps platform
       var marker = new window.google.maps.Marker({
         position: { lat: sight.venue.location.lat , lng: sight.venue.location.lng },
         map: map,
         title: sight.venue.name
       })
+      
+      // event listener for click on markers
+      marker.addListener('click', function(){
+        infowindow.setContent(infoWinText)
+        infowindow.open(map,marker)
+      })
+
     })
   }
 
