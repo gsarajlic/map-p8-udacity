@@ -41,18 +41,19 @@ class App extends Component {
     const zagreb = {lat: 45.815011, lng: 15.981919}
     const map = new window.google.maps.Map(document.getElementById('map'), {
       center: zagreb,
-      zoom: 11
+      zoom: 14
     })
 
     // Create An InfoWindow
-    var infowindow = new window.google.maps.InfoWindow()
+    let infowindow = new window.google.maps.InfoWindow()
 
-    this.state.sights.map(sight => {
+    const newLocal = this;
+    newLocal.state.sights.map(sight => {
       
       let infoWinText = `${sight.venue.name}`
       
       // marker taken from google maps platform
-      var marker = new window.google.maps.Marker({
+      let marker = new window.google.maps.Marker({
         position: { lat: sight.venue.location.lat , lng: sight.venue.location.lng },
         map: map,
         title: sight.venue.name
@@ -70,9 +71,19 @@ class App extends Component {
 
   render() {
     return (
-      <main>
-        <div id="map"></div>
-      </main>
+      <div id="App">
+        <header className="App-header">
+          <h1 className="App-title">Udacity P8 Google maps API</h1>
+        </header>
+        <main id="main">
+          <div id="map" role="application"></div>
+          <aside id="sidebar">
+            ASIDE MENU
+          </aside>
+        </main>
+        
+      </div>
+      
     )
   }
 }
