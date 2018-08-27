@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import _ from 'lodash';
 
 class App extends Component {
 
@@ -36,6 +37,20 @@ class App extends Component {
      })
   }
 
+/// ******************************OVDJE SMO STALI ****************************************
+
+/* 
+  sightsFilter = () => {
+    this.setState(
+      {
+        sights: _.filter({this.state.sights.venue.name})
+      }
+    )
+  } 
+ */
+
+
+
   initMap = () => {
     
     const zagreb = {lat: 45.815011, lng: 15.981919}
@@ -47,8 +62,7 @@ class App extends Component {
     // Create An InfoWindow
     let infowindow = new window.google.maps.InfoWindow()
 
-    const newLocal = this;
-    newLocal.state.sights.map(sight => {
+      this.state.sights.forEach(sight => {
       
       let infoWinText = `${sight.venue.name}`
       
@@ -57,7 +71,7 @@ class App extends Component {
         position: { lat: sight.venue.location.lat , lng: sight.venue.location.lng },
         map: map,
         title: sight.venue.name,
-        animation: window.google.maps.Animation.DROP,
+       //animation: window.google.maps.Animation.DROP,
       })
       
       // event listener for click on markers
@@ -79,7 +93,14 @@ class App extends Component {
         <main id="main">
           <div id="map" role="application"></div>
         </main>
-        <aside id="sidebar"></aside>
+        <aside id="sidebar">
+          <button className="button" onClick={this.filter}></button>
+          <ol>
+            {this.state.sights.map( s =>
+              <li key={s.venue.id} > {s.venue.name}</li> 
+              )}
+          </ol>
+        </aside>
       </div>
       
     )
