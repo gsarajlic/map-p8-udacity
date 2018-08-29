@@ -6,6 +6,8 @@ import axios from 'axios';
 import _ from 'lodash';
 import SightList from './components/SightList';
 import SightFilter from './components/SightFilter';
+import PerfectScrollbar from 'react-perfect-scrollbar';
+
 
 class App extends Component {
 
@@ -98,7 +100,8 @@ class App extends Component {
 
     this.state.sights.forEach(sight => {
 
-      let infoWinText = `${sight.venue.name}`
+      let infoWinText = `<h4 className= infoWinTitle>${sight.venue.name}</h4>
+                         <b>Adress :</b> ${sight.venue.location.formattedAddress}`
 
       // marker taken from google maps platform
       let marker = new window.google.maps.Marker({
@@ -124,8 +127,16 @@ class App extends Component {
     })
   }
 
+  
+
 
   render() {
+
+    const container = document.querySelector('#container');
+    console.log(container)
+    // or just with selector string
+    const ps = new PerfectScrollbar('#container');
+
     return (
       <div id="App">
         <header className="App-header">
@@ -138,7 +149,7 @@ class App extends Component {
         <aside id="sidebar">
           <SightFilter onQueryChange={this.handleQueryChange} />
           <SightList sights={this.state.sights} onSightClick={this.handleSightClick} />
-        </aside>
+          </aside>
       </div>
     )
   }
