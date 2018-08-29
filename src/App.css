@@ -120,6 +120,7 @@ top:1px;
   #main {
     display: flex;
     width: 70%;
+    height: 100vh;
     order: 2;
 
   }
@@ -138,10 +139,6 @@ top:1px;
 
   .App-title {
     font-size: 1em;
-  }
-
-  .search-filter {
-    font-size: 20px;
   }
 
   .gm-style-iw {
