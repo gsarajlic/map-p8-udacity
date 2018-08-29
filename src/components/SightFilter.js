@@ -8,8 +8,8 @@ class SightFilter extends Component {
 
     render() {
         return (
-            <div>
-                <input id="searchItems" type="text" aria-role="Search filter input field" aria-label="search places" placeholder="Filter sights..." value={this.props.query} onChange={this.handleFilter}/>
+            <div id="searchDiv">
+                <input id="searchItems" type="text" aria-label="type text to search places" placeholder="Filter sights..." value={this.props.query} onChange={this.handleFilter}/>
             </div>
         );
     }

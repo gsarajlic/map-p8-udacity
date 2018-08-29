@@ -30,7 +30,8 @@
 
 
 #sidebar {
-padding-top:15px;
+display:flex;
+flex-flow: column;
 justify-content: center;
 background-color: #dcdcdc;
 color: #6666;
@@ -50,9 +51,21 @@ h2{
 }
 
 #searchItems {
-  width: 90%;
+  width: 95%;
   height: 20px;
+  text-align: center;
+}
 
+#searchDiv {
+  justify-self: center;
+  padding-bottom: 10px;
+  width: 100%;
+  order: 1;
+}
+
+#sights-list {
+order: 2;
+justify-content: center;
 }
 
 #list {
