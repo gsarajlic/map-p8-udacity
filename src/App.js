@@ -126,7 +126,7 @@ class App extends Component {
 
     this.state.sights.forEach(sight => {
 
-      let infoWinText = `<div className="infoWindow"><h4 className= infoWinTitle>${sight.venue.name}</h4>
+      let infoWinText = `<div className="infoWindow" tabIndex={0}><h4 className= infoWinTitle>${sight.venue.name}</h4>
                          <p className="infoWinAddress"<b>Adress :</b> ${sight.venue.location.formattedAddress} </p></div>`
 
       // marker taken from google maps platform
@@ -159,7 +159,7 @@ class App extends Component {
     return (
       <div id="App">
         <header className="App-header">
-          <h1 className="App-title">UDACITY P8 NEIGHBOORHOOD MAP</h1>
+          <h1 className="App-title" tabIndex={0}>UDACITY P8 NEIGHBOORHOOD MAP</h1>
         </header>
         <main id="main">
           <div id="map" role="application">
@@ -167,7 +167,7 @@ class App extends Component {
         </main>
         <aside id="sidebar">
             <SightFilter onQueryChange={this.handleQueryChange} />
-            <div id="sights-list" aria-label="list of sights in Zagreb">
+            <div id="sights-list" aria-label="list of sights in Zagreb" tabIndex={0}>
               <SightList sights={this.state.sights} onSightClick={this.handleSightClick} />
             </div>
           </aside>
