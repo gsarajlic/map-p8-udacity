@@ -62,7 +62,7 @@ class App extends Component {
 
     const sightName = e.target.value;
     const marker = this.state.markersDict[sightName];
-    const markersDict = this.state.markersDict;
+    //const markersDict = this.state.markersDict;
 
     window.google.maps.event.trigger(marker, 'click', {});
   }
@@ -121,8 +121,8 @@ class App extends Component {
 
     this.state.sights.forEach(sight => {
 
-      let infoWinText = `<h4 className= infoWinTitle>${sight.venue.name}</h4>
-                         <b>Adress :</b> ${sight.venue.location.formattedAddress}`
+      let infoWinText = `<div className="infoWindow"><h4 className= infoWinTitle>${sight.venue.name}</h4>
+                         <p className="infoWinAddress"<b>Adress :</b> ${sight.venue.location.formattedAddress} </p></div>`
 
       // marker taken from google maps platform
       let marker = new window.google.maps.Marker({
@@ -154,7 +154,7 @@ class App extends Component {
     return (
       <div id="App">
         <header className="App-header">
-          <h1 className="App-title">Udacity P8 Google maps API</h1>
+          <h1 className="App-title">UDACITY P8 NEIGHBOORHOOD MAP</h1>
         </header>
         <main id="main">
           <div id="map" role="application">
