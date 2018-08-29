@@ -11,7 +11,7 @@ class SightList extends Component {
         return (
             <ul id="list" type="text" name="List of locations">
                 {this.props.sights.map(s =>
-                    <button className="listbutton" key={s.venue.id} onClick={this.handleClick} value={s.venue.name} name="">{s.venue.name}</button>
+                    <button className="listbutton" aria-label="press for sight info" key={s.venue.id} onClick={this.handleClick} value={s.venue.name} name="">{s.venue.name}</button>
                     ) 
                 }
             </ul>

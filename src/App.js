@@ -29,7 +29,12 @@ class App extends Component {
   };
 
   componentDidMount() {
+    window.gm_authFailure = this.gm_authFailure;
     this.getData();
+  }
+
+  gm_authFailure() {
+    window.alert("Google Maps error! Please try again.")
   }
 
   handleQueryChange = (e) => {
@@ -162,7 +167,7 @@ class App extends Component {
         </main>
         <aside id="sidebar">
             <SightFilter onQueryChange={this.handleQueryChange} />
-            <div id="sights-list">
+            <div id="sights-list" aria-label="list of sights in Zagreb">
               <SightList sights={this.state.sights} onSightClick={this.handleSightClick} />
             </div>
           </aside>
@@ -177,6 +182,7 @@ function mapLoadScript(url) {
   script.src = url
   script.async = true
   script.defer = true
+  script.onerror = function () { window.alert("Google Maps API faile to load data!") }
   index.parentNode.insertBefore(script, index)
 }
 
