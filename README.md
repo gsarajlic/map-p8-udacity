@@ -13,7 +13,7 @@
 - In your **terminal** go to the **root** of this repository
 - Then Run `npm install` and after that run `npm start`
 - Application will open up in your default browser on       localhost:3000 port by default
-- This app has implemented serwice worker only in production build
+- This app has implemented service worker only in production build
 
 ### Dependencies
 
