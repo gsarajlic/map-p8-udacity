@@ -104,3 +104,41 @@ position:relative;
 top:1px;
 }
 
+/* *********************** MEADIA QUERRIES ******************************** */
+
+
+@media screen and (max-width: 399px) {
+  .nav {
+    width: 350px;
+    -webkit-transform: translate(-350px, 0);
+    transform: translate(-350px, 0);
+  }
+
+  .App-title {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 367px) {
+  .nav {
+    width: 320px;
+    -webkit-transform: translate(-320px, 0);
+    transform: translate(-320px, 0);
+  }
+
+  .App-title {
+    font-size: 1em;
+  }
+
+  .search-filter {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 337px) {
+  .nav {
+    width: 300px;
+    -webkit-transform: translate(-300px, 0);
+    transform: translate(-300px, 0);
+  }
+}

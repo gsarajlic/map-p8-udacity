@@ -7,6 +7,17 @@ import _ from 'lodash';
 import SightList from './components/SightList';
 import SightFilter from './components/SightFilter';
 
+function toggleBounce(marker, markersDict) {
+
+  const keys = Object.keys(markersDict);
+
+  keys.forEach((name) => {
+    let marker = markersDict[name];
+    marker.setAnimation(null);
+  });
+  
+  marker.setAnimation(window.google.maps.Animation.BOUNCE);
+}
 
 class App extends Component {
 
@@ -51,13 +62,13 @@ class App extends Component {
 
     const sightName = e.target.value;
     const marker = this.state.markersDict[sightName];
-    
-    window.google.maps.event.trigger(marker, 'click', {});
+    const markersDict = this.state.markersDict;
 
+    window.google.maps.event.trigger(marker, 'click', {});
   }
 
   loadMap = () => {
-    mapLoadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDBAVP-AGB5WzPHx4SdmJFDs5z1Thd3EQ4&callback=initMap')
+    mapLoadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDBAVP-AGB5WzPHx4SdmJFDs5z1Thd3EQ4&callback=initMap');
     window.initMap = this.initMap;
   }
 
@@ -91,7 +102,7 @@ class App extends Component {
     })
   }
 
-
+ 
   initMap = () => {
 
     const zagreb = {
@@ -130,14 +141,13 @@ class App extends Component {
 
       // event listener for click on markers
       marker.addListener('click', function () {
+        toggleBounce(marker, markers);
         infowindow.setContent(infoWinText)
         infowindow.open(map, marker)
       })
 
     })
   }
-
-  
 
 
   render() {
