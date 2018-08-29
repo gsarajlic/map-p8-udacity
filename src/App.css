@@ -39,6 +39,11 @@ height: 100vh;
 order: 1;
 }
 
+#sights-list {
+  height: 90%;
+  overflow: auto;
+}
+
 
 h2{  
   font-size: 16px;

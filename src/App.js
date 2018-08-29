@@ -6,7 +6,6 @@ import axios from 'axios';
 import _ from 'lodash';
 import SightList from './components/SightList';
 import SightFilter from './components/SightFilter';
-import PerfectScrollbar from 'react-perfect-scrollbar';
 
 
 class App extends Component {
@@ -29,6 +28,17 @@ class App extends Component {
     const filteredSights = _.filter(this.state.allSights, (item) => {
       const sightName = item.venue.name.toLowerCase();;
       return sightName.includes(searchSubstring.toLowerCase());
+    });
+
+    const markersDict = this.state.markersDict;
+
+    const keys = Object.keys(markersDict);
+
+    keys.forEach((name) => {
+      let marker = markersDict[name];
+      const visible = _.findIndex(filteredSights, (s) => { return s.venue.name === name}) > -1;
+
+      marker.setVisible(visible);
     });
 
     this.setState({
@@ -131,12 +141,6 @@ class App extends Component {
 
 
   render() {
-
-    const container = document.querySelector('#container');
-    console.log(container)
-    // or just with selector string
-    const ps = new PerfectScrollbar('#container');
-
     return (
       <div id="App">
         <header className="App-header">
@@ -147,8 +151,10 @@ class App extends Component {
           </div>
         </main>
         <aside id="sidebar">
-          <SightFilter onQueryChange={this.handleQueryChange} />
-          <SightList sights={this.state.sights} onSightClick={this.handleSightClick} />
+            <SightFilter onQueryChange={this.handleQueryChange} />
+            <div id="sights-list">
+              <SightList sights={this.state.sights} onSightClick={this.handleSightClick} />
+            </div>
           </aside>
       </div>
     )
