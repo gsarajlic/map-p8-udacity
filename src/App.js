@@ -126,8 +126,8 @@ class App extends Component {
 
     this.state.sights.forEach(sight => {
 
-      let infoWinText = `<div className="infoWindow" tabIndex={0}><h4 className= infoWinTitle>${sight.venue.name}</h4>
-                         <p className="infoWinAddress"<b>Adress :</b> ${sight.venue.location.formattedAddress} </p></div>`
+      let infoWinText = `<div className="infoWindow" tabIndex="0"><h4 className="infoWinTitle" tabIndex="0">${sight.venue.name}</h4>
+                         <p className="infoWinAddress" tabIndex="0"<b>Adress :</b> ${sight.venue.location.formattedAddress} </p></div>`
 
       // marker taken from google maps platform
       let marker = new window.google.maps.Marker({
